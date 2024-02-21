@@ -12,9 +12,5 @@ public class Main {
     public static void main(String[] args) throws TelegramApiException, IOException {
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
         telegramBotsApi.registerBot(new TelegramBot());
-
-        SearchLogicClass searchLogicClass = new SearchLogicClass();
-        searchLogicClass.doSmth("frankenbeker@gmail.com","email");
-
     }
 }
