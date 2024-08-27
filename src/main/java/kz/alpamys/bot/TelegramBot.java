@@ -11,12 +11,12 @@ import java.util.List;
 public class TelegramBot extends TelegramLongPollingBot {
     @Override
     public String getBotUsername() {
-        return "test09128302951bot";
+        return "pharma17_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "7128516836:AAHLkveXtBLJt4c_84Ihirw3xzNSHsQbuLs";
+        return "7027284843:AAF3pMiJSGELXExA4snVD9Az02jODKZGDoA";
     }
 
     @Override
@@ -32,9 +32,10 @@ public class TelegramBot extends TelegramLongPollingBot {
         String emailByClient = update.getMessage().getText();
         SearchLogicClass searchLogicClass = new SearchLogicClass();
         sendMessage.setText(String.valueOf(searchLogicClass.doSmth(emailByClient,"auto")));
-        if (sendMessage.equals("")){
-            sendMessage.setText(String.valueOf(searchLogicClass.doSmth(emailByClient,"mass")));
-        }
+//        if (sendMessage.equals("")){
+//            sendMessage.setText(String.valueOf(searchLogicClass.doSmth(emailByClient,"mass")));
+//            sendMessage.setText("dannih net");
+//        }
         try {
             this.execute(sendMessage);
         } catch (TelegramApiException e) {
