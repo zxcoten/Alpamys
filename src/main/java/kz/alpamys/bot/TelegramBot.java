@@ -1,6 +1,7 @@
 package kz.alpamys.bot;
 
 import kz.alpamys.search.SearchLogicClass;
+import org.json.JSONObject;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -31,7 +32,11 @@ public class TelegramBot extends TelegramLongPollingBot {
         sendMessage.setChatId(chatID);
         String emailByClient = update.getMessage().getText();
         SearchLogicClass searchLogicClass = new SearchLogicClass();
-        sendMessage.setText(String.valueOf(searchLogicClass.doSmth(emailByClient,"auto")));
+
+        String result = String.valueOf(searchLogicClass.doSmth(emailByClient,"auto"));
+
+
+        sendMessage.setText(result);
 //        if (sendMessage.equals("")){
 //            sendMessage.setText(String.valueOf(searchLogicClass.doSmth(emailByClient,"mass")));
 //            sendMessage.setText("dannih net");
