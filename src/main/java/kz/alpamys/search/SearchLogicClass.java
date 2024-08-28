@@ -31,8 +31,12 @@ public class SearchLogicClass{
 
 
                 }
+                StringBuilder sobirat = new StringBuilder();
+                for (String arrayLogin : arrayLogins) {
+                    sobirat.append(arrayLogin + " \n");
+                }
 
-                return arrayLogins.toString();
+                return String.valueOf(sobirat);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

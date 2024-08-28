@@ -30,24 +30,33 @@ public class TelegramBot extends TelegramLongPollingBot {
         String chatID = update.getMessage().getChatId().toString();
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatID);
-        String emailByClient = update.getMessage().getText();
-        SearchLogicClass searchLogicClass = new SearchLogicClass();
+        String updateText = update.getMessage().getText();
+        if (updateText.equals("/start")) {
+            sendMessage.setText("Саламалейкум! Введи почту или логин или номер телефона для пробива на слитые данные!");
+            try {
+                this.execute(sendMessage);
+            } catch (TelegramApiException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            String emailByClient = update.getMessage().getText();
+            SearchLogicClass searchLogicClass = new SearchLogicClass();
 
-        String result = String.valueOf(searchLogicClass.doSmth(emailByClient,"auto"));
+            String result = String.valueOf(searchLogicClass.doSmth(emailByClient, "auto"));
 
 
-        sendMessage.setText(result);
+            sendMessage.setText(result);
 //        if (sendMessage.equals("")){
 //            sendMessage.setText(String.valueOf(searchLogicClass.doSmth(emailByClient,"mass")));
 //            sendMessage.setText("dannih net");
 //        }
-        try {
-            this.execute(sendMessage);
-        } catch (TelegramApiException e) {
-            throw new RuntimeException(e);
+            try {
+                this.execute(sendMessage);
+            } catch (TelegramApiException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
-
     @Override
     public void onUpdatesReceived(List<Update> updates) {
         super.onUpdatesReceived(updates);
